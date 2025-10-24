@@ -1,167 +1,149 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { 
+  Mail, Calendar, Database, Search, CheckSquare, Share2,
+  MessageCircle, Code, Palette, Cloud, FileText, Zap 
+} from 'lucide-react';
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  const skills = [
-    {
-      title: 'Product Listing',
-      description: 'Creating compelling product descriptions and optimized listings for e-commerce platforms.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Internet Research',
-      description: 'Conducting thorough research, data gathering, and competitive analysis with precision.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Order Fulfillment',
-      description: 'Managing order processing, tracking, and ensuring smooth delivery operations.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Data Entry',
-      description: 'Fast and accurate data input, database management, and spreadsheet organization.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Calendar Management',
-      description: 'Scheduling appointments, coordinating meetings, and managing time efficiently.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Email Handling',
-      description: 'Professional email management, inbox organization, and timely correspondence.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Customer Support',
-      description: 'Providing exceptional customer service, resolving issues, and maintaining satisfaction.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Technical Documentation',
-      description: 'Creating clear documentation, SOPs, and process guides with technical accuracy.',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      ),
-    },
+  const vaSkills = [
+    { icon: Mail, name: 'Email & Calendar Management', color: '#CBA135' },
+    { icon: Database, name: 'Data Entry & Organization', color: '#CBA135' },
+    { icon: Search, name: 'Internet Research', color: '#CBA135' },
+    { icon: CheckSquare, name: 'Task Tracking (Trello, Notion, ClickUp)', color: '#CBA135' },
+    { icon: MessageCircle, name: 'Customer Support Basics', color: '#CBA135' },
+    { icon: Share2, name: 'Social Media Scheduling', color: '#CBA135' },
   ];
 
-  return (
-    <section
-      id="skills"
-      ref={sectionRef}
-      className="relative py-24 bg-gradient-to-b from-cyber-dark via-cyber-navy to-cyber-darker overflow-hidden"
+  const techSkills = [
+    { icon: Code, name: 'HTML, CSS, JavaScript', color: '#CBA135' },
+    { icon: Database, name: 'PHP, MySQL', color: '#CBA135' },
+    { icon: Palette, name: 'Canva & Figma', color: '#CBA135' },
+    { icon: Cloud, name: 'Google Workspace & MS Office', color: '#CBA135' },
+    { icon: FileText, name: 'File Management', color: '#CBA135' },
+    { icon: Zap, name: 'Automation Scripts', color: '#CBA135' },
+  ];
+
+  const SkillCard = ({ icon: Icon, name, color, delay }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay }}
+      className="card-hover bg-charcoal p-6 rounded-lg"
     >
-      {/* Neon Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-cyber-pink/5 via-transparent to-cyber-blue/5"></div>
-      
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-full" style={{
-          backgroundImage: 'linear-gradient(rgba(0,191,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,216,0.1) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }}></div>
+      <div className="flex items-start gap-4">
+        <div className="p-3 bg-slate rounded-lg border border-gold">
+          <Icon size={24} style={{ color }} />
+        </div>
+        <div className="flex-1">
+          <h4 className="text-white font-semibold text-lg">{name}</h4>
+        </div>
       </div>
+    </motion.div>
+  );
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-cyber-purple font-semibold tracking-wider uppercase mb-2">What I Do</p>
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text neon-pulse mb-4">
-            Administrative & Support Skills
+  return (
+    <section id="skills" className="py-20 bg-charcoal relative">
+      <div className="container mx-auto px-6" ref={ref}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Skills & <span className="gradient-text">Tools</span>
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-transparent via-cyber-blue to-cyber-pink mx-auto"></div>
-        </div>
+          <div className="section-divider" />
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A powerful combination of virtual assistant expertise and technical proficiency
+          </p>
+        </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className={`group relative glass p-6 rounded-lg border border-cyber-blue/20 hover:border-cyber-pink/50 transition-all duration-500 hover:neon-blue-glow ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          {/* VA Skills */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-8"
             >
-              {/* Hover Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyber-blue/10 via-cyber-pink/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
-              
-              <div className="relative z-10 space-y-4">
-                {/* Icon */}
-                <div className="w-16 h-16 bg-gradient-to-br from-cyber-blue/20 to-cyber-pink/20 rounded-lg flex items-center justify-center text-cyber-text group-hover:scale-110 group-hover:neon-blue-glow transition-all">
-                  {skill.icon}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-cyber-text group-hover:gradient-text transition-all">
-                  {skill.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {skill.description}
-                </p>
-              </div>
-
-              {/* Corner Accent */}
-              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-cyber-blue/20 rounded-tr-lg group-hover:border-cyber-pink/50 transition-colors"></div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-2 flex items-center gap-3">
+                <span className="text-gold">🧰</span>
+                Virtual Assistant Skills
+              </h3>
+              <p className="text-gray-400">Core competencies for seamless support</p>
+            </motion.div>
+            
+            <div className="grid gap-4">
+              {vaSkills.map((skill, index) => (
+                <SkillCard
+                  key={skill.name}
+                  icon={skill.icon}
+                  name={skill.name}
+                  color={skill.color}
+                  delay={0.3 + index * 0.1}
+                />
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Tech Skills */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-8"
+            >
+              <h3 className="text-2xl md:text-3xl font-bold mb-2 flex items-center gap-3">
+                <span className="text-gold">💻</span>
+                Developer & Tech Tools
+              </h3>
+              <p className="text-gray-400">Technical skills that set me apart</p>
+            </motion.div>
+            
+            <div className="grid gap-4">
+              {techSkills.map((skill, index) => (
+                <SkillCard
+                  key={skill.name}
+                  icon={skill.icon}
+                  name={skill.name}
+                  color={skill.color}
+                  delay={0.3 + index * 0.1}
+                />
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* Tool Badges */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-gray-400 mb-6">Proficient with popular tools:</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['Notion', 'Trello', 'ClickUp', 'Canva', 'Figma', 'Google Workspace', 
+              'Microsoft Office', 'Buffer', 'Meta Business Suite', 'GitHub'].map((tool, index) => (
+              <motion.span
+                key={tool}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.9 + index * 0.05 }}
+                className="px-5 py-2 bg-slate border border-gold rounded-full text-gold font-semibold text-sm gold-glow"
+              >
+                {tool}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

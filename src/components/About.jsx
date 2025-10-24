@@ -1,117 +1,106 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import img2 from '../assets/img2.jpg';
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="relative py-24 bg-gradient-to-b from-cyber-darker via-cyber-navy to-cyber-dark overflow-hidden"
-    >
-      {/* Neon Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyber-blue/5 via-transparent to-cyber-pink/5"></div>
-      
-      {/* Diagonal Divider Top */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-cyber-dark diagonal-divider"></div>
+    <section id="about" className="py-20 bg-slate relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle, #CBA135 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Decorative Element */}
-          <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <div className="relative w-full aspect-square max-w-md mx-auto">
-              {/* Geometric Shapes */}
-              <div className="absolute inset-0 border-2 border-cyber-blue/30 rounded-lg transform rotate-6 neon-blue-glow"></div>
-              <div className="absolute inset-8 border-2 border-cyber-pink/40 rounded-lg transform -rotate-6 neon-pink-glow"></div>
-              <div className="absolute inset-16 glass-blue rounded-lg"></div>
+      <div className="container mx-auto px-6 relative z-10" ref={ref}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            About <span className="gradient-text">Me</span>
+          </h2>
+          <div className="section-divider" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          {/* Portrait Image 2 */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative order-2 md:order-1"
+          >
+            <div className="relative w-full aspect-[3/4] max-w-md mx-auto">
+              {/* Decorative Frame */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-gold to-transparent opacity-20 rounded-lg" />
               
-              {/* Center Icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-cyber-blue/30 to-cyber-pink/30 rounded-full flex items-center justify-center neon-pulse">
-                    <svg className="w-12 h-12 text-cyber-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </div>
-                  <p className="text-cyber-purple font-medium">Innovation Meets Efficiency</p>
-                </div>
+              {/* Image */}
+              <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-gold shadow-2xl">
+                <img 
+                  src={img2} 
+                  alt="Jeremiah Reyes - About Portrait" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Side - Content */}
-          <div className={`space-y-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="space-y-2">
-              <p className="text-cyber-purple font-semibold tracking-wider uppercase">About Me</p>
-              <h2 className="text-4xl md:text-5xl font-bold gradient-text neon-pulse">
-                Virtual Assistant with a Technical Edge
-              </h2>
-            </div>
-
-            <div className="h-1 w-20 bg-gradient-to-r from-cyber-blue via-cyber-pink to-transparent"></div>
-
-            <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
-              <p>
-                I'm a <span className="text-cyber-blue font-semibold">tech-savvy Virtual Assistant</span> with 
-                a strong background in IT and software development. This unique combination allows me to 
-                provide not just administrative support, but innovative, tech-driven solutions that 
-                streamline workflows and boost productivity.
+          {/* About Text */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="order-1 md:order-2"
+          >
+            <div className="prose prose-invert max-w-none">
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+                A <span className="text-gold font-semibold">detail-oriented Virtual Assistant</span> passionate 
+                about helping teams stay organized and productive. I may be new to the field, but my technical 
+                skills in web development and tools like <span className="text-gold">Google Workspace</span>, 
+                <span className="text-gold"> Notion</span>, and <span className="text-gold">Canva</span> allow 
+                me to adapt quickly and deliver professional results.
               </p>
               
-              <p>
-                With expertise spanning from <span className="text-cyber-pink font-semibold">data management</span> and
-                <span className="text-cyber-pink font-semibold"> customer support</span> to 
-                <span className="text-cyber-purple font-semibold"> e-commerce operations</span> and 
-                <span className="text-cyber-purple font-semibold"> digital tools</span>, I bridge the gap between 
-                traditional VA services and modern technical requirements.
+              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                With a background in software development, I bring a unique problem-solving approach to 
+                administrative tasks. I understand workflows, automation, and efficiency — making me more 
+                than just a task executor, but a strategic partner in your business operations.
               </p>
 
-              <p>
-                Whether it's managing your calendar, handling customer inquiries, or optimizing your 
-                online store, I bring a developer's mindset to every task—ensuring accuracy, efficiency, 
-                and scalability.
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-6">
-              <div className="glass-blue rounded-lg p-4 text-center space-y-1 hover:scale-105 transition-transform">
-                <p className="text-3xl font-bold gradient-text">10+</p>
-                <p className="text-sm text-gray-400">Tools Mastered</p>
-              </div>
-              <div className="glass-pink rounded-lg p-4 text-center space-y-1 hover:scale-105 transition-transform">
-                <p className="text-3xl font-bold gradient-text">100%</p>
-                <p className="text-sm text-gray-400">Client Satisfaction</p>
-              </div>
-              <div className="glass-blue rounded-lg p-4 text-center space-y-1 hover:scale-105 transition-transform">
-                <p className="text-3xl font-bold gradient-text">24/7</p>
-                <p className="text-sm text-gray-400">Availability</p>
+              <div className="flex flex-wrap gap-3 mt-8">
+                <span className="px-4 py-2 bg-charcoal border border-gold rounded-full text-gold text-sm font-semibold">
+                  Fast Learner
+                </span>
+                <span className="px-4 py-2 bg-charcoal border border-gold rounded-full text-gold text-sm font-semibold">
+                  Tech-Savvy
+                </span>
+                <span className="px-4 py-2 bg-charcoal border border-gold rounded-full text-gold text-sm font-semibold">
+                  Detail-Oriented
+                </span>
+                <span className="px-4 py-2 bg-charcoal border border-gold rounded-full text-gold text-sm font-semibold">
+                  Reliable
+                </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        {/* Animated Divider */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="mt-16 h-1 bg-gradient-to-r from-transparent via-gold to-transparent"
+        />
       </div>
     </section>
   );
