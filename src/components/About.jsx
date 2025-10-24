@@ -66,7 +66,7 @@ const About = () => {
                 A <span className="text-gold font-semibold">detail-oriented Virtual Assistant</span> passionate 
                 about helping teams stay organized and productive. I may be new to the field, but my technical 
                 skills in web development and tools like <span className="text-gold">Google Workspace</span>, 
-                <span className="text-gold"> Notion</span>, and <span className="text-gold">Canva</span> allow 
+                <span className="text-gold"> Notion</span>, <span className="text-gold">Canva</span>, and <span className="text-gold">AI Usage</span> allow 
                 me to adapt quickly and deliver professional results.
               </p>
               

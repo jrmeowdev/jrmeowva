@@ -154,8 +154,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Email</p>
-                    <a href="mailto:jeremiah@example.com" className="text-white hover:text-gold transition-colors">
-                      jeremiah@example.com
+                    <a href="mailto:jeremiahreyes.r01@gmail.com" className="text-white hover:text-gold transition-colors">
+                      jeremiahreyes.r01@gmail.com
                     </a>
                   </div>
                 </div>
@@ -166,8 +166,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Phone</p>
-                    <a href="tel:+1234567890" className="text-white hover:text-gold transition-colors">
-                      +123 456 7890
+                    <a href="tel:+639489715221" className="text-white hover:text-gold transition-colors">
+                      +63 948 971 5221
                     </a>
                   </div>
                 </div>
@@ -189,7 +189,7 @@ const Contact = () => {
                 <div className="flex gap-4">
                   <motion.a
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/jeremiah-reyes-832a02321/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-charcoal rounded-lg flex items-center justify-center border border-gold gold-glow"
@@ -198,7 +198,7 @@ const Contact = () => {
                   </motion.a>
                   <motion.a
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    href="https://github.com"
+                    href="https://github.com/jrmeowdev"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-charcoal rounded-lg flex items-center justify-center border border-gold gold-glow"
@@ -207,7 +207,7 @@ const Contact = () => {
                   </motion.a>
                   <motion.a
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    href="mailto:jeremiah@example.com"
+                    href="mailto:jeremiahreyes.r01@gmail.com"
                     className="w-12 h-12 bg-charcoal rounded-lg flex items-center justify-center border border-gold gold-glow"
                   >
                     <Mail size={20} className="text-gold" />

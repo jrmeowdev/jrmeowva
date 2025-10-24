@@ -13,15 +13,15 @@ const Skills = () => {
     { icon: Mail, name: 'Email & Calendar Management', color: '#CBA135' },
     { icon: Database, name: 'Data Entry & Organization', color: '#CBA135' },
     { icon: Search, name: 'Internet Research', color: '#CBA135' },
-    { icon: CheckSquare, name: 'Task Tracking (Trello, Notion, ClickUp)', color: '#CBA135' },
+    { icon: CheckSquare, name: 'Task Tracking (Trello, Notion, ClickUp, Jira)', color: '#CBA135' },
     { icon: MessageCircle, name: 'Customer Support Basics', color: '#CBA135' },
     { icon: Share2, name: 'Social Media Scheduling', color: '#CBA135' },
   ];
 
   const techSkills = [
-    { icon: Code, name: 'HTML, CSS, JavaScript', color: '#CBA135' },
-    { icon: Database, name: 'PHP, MySQL', color: '#CBA135' },
-    { icon: Palette, name: 'Canva & Figma', color: '#CBA135' },
+    { icon: Code, name: 'HTML, CSS, JavaScript, React, UI/UX', color: '#CBA135' },
+    { icon: Database, name: 'PHP, MySQL, NodeJS, MongoDB, Firebase', color: '#CBA135' },
+    { icon: Palette, name: 'Canva, Figma, Capcut', color: '#CBA135' },
     { icon: Cloud, name: 'Google Workspace & MS Office', color: '#CBA135' },
     { icon: FileText, name: 'File Management', color: '#CBA135' },
     { icon: Zap, name: 'Automation Scripts', color: '#CBA135' },

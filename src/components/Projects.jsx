@@ -26,14 +26,16 @@ const Projects = () => {
       description: 'Sample VA dashboard built using Notion and automation workflow for client task management.',
       role: 'Virtual Assistant',
       tools: ['Notion', 'Automation', 'Workflow Design'],
-      gradient: 'from-gold to-orange-600'
+      gradient: 'from-gold to-orange-600',
+      link: 'https://www.notion.so/296a8569ffdb80368e11e678118fa889?v=be326979bf164ddbb02398f3ca1a31e5&source=copy_link',
     },
     {
       title: 'Email Management System',
       description: 'Organized and streamlined email workflows using filters, labels, and automated responses.',
       role: 'Administrative Support',
       tools: ['Gmail', 'Google Workspace', 'Filters'],
-      gradient: 'from-gold to-yellow-700'
+      gradient: 'from-gold to-yellow-700',
+      link: 'https://www.notion.so/Email-Management-System-VA-Demo-3fe75f304670494685cc98a9c535e122?source=copy_link',
     },
     {
       title: 'Social Media Content Calendar',
@@ -66,6 +68,7 @@ const Projects = () => {
         <motion.button
           whileHover={{ scale: 1.1, rotate: 5 }}
           className="p-2 bg-charcoal rounded-lg border border-gold opacity-0 group-hover:opacity-100 transition-opacity"
+          onClick={() => window.open(project.link, '_blank')}
         >
           <ExternalLink size={20} className="text-gold" />
         </motion.button>
