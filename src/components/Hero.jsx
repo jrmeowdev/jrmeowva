@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail } from 'lucide-react';
 import img1 from '../assets/img1.jpg';
+import CVDownloadModal from './CVDownloadModal';
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Gradient */}
@@ -71,10 +74,13 @@ const Hero = () => {
                 <Mail size={20} />
                 Hire Me
               </a>
-              <a href="#" className="btn-outline gold-glow inline-flex items-center gap-2">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="btn-outline gold-glow inline-flex items-center gap-2"
+              >
                 <Download size={20} />
                 Download CV
-              </a>
+              </button>
             </motion.div>
           </motion.div>
 
@@ -106,6 +112,9 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* CV Download Modal */}
+      <CVDownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Scroll Indicator */}
       <motion.div

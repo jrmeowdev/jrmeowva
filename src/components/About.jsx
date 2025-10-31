@@ -94,11 +94,30 @@ const About = () => {
           </motion.div>
         </div>
 
+        {/* Loom Video Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 max-w-4xl mx-auto"
+        >
+          <h3 className="text-3xl font-bold text-center mb-6">
+            Get to Know <span className="gradient-text">Me Better</span>
+          </h3>
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              src="https://www.loom.com/embed/af0e6969c45d46bb8693cab0df47475f?sid=a8f2e8f4-c0e4-4e0d-9a9a-1e8f2e8f4c0e"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full rounded-lg border-2 border-gold shadow-2xl"
+            />
+          </div>
+        </motion.div>
+
         {/* Animated Divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : {}}
-          transition={{ duration: 1, delay: 0.6 }}
+          transition={{ duration: 1, delay: 1 }}
           className="mt-16 h-1 bg-gradient-to-r from-transparent via-gold to-transparent"
         />
       </div>
