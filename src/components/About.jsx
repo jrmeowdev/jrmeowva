@@ -84,7 +84,7 @@ const About = () => {
                   Tech-Savvy
                 </span>
                 <span className="px-4 py-2 bg-charcoal border border-gold rounded-full text-gold text-sm font-semibold">
-                  Detail-Oriented
+                  Self-Motivated
                 </span>
                 <span className="px-4 py-2 bg-charcoal border border-gold rounded-full text-gold text-sm font-semibold">
                   Reliable
